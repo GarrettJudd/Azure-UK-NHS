@@ -4,10 +4,9 @@
 
 This Azure Security and Compliance Blueprint provides guidance for the deployment of a United Kingdom National Health Good Practices Guide (UK NHS GPG) compliant platform as a service (PaaS) environment suitable for the collection, storage, and retrieval of healthcare data. It showcases a common reference architecture and demonstrates the proper handling of health related data in a secure, compliant, multi-tier environment. This blueprint illustrates an end-to-end solution to meet the needs of organizations seeking a cloud-based approach to reducing the burden and cost of deployment.
 
-This reference architecture, associated control implementation guides, and threat models are intended to serve as a foundation for customers to adjust to their specific requirements and should not be used as-is in a production environment. Deploying an application into this environment without modification is insufficient to completely meet the requirements of the UK NHS Class 3 or better baseline. Please note the following:
+This reference architecture, implementation guide, and threat model provide a foundation for customers to comply with UK NHS requirements. This solution provides a baseline to help customers deploy workloads to Azure in a UK NHS compliant manner; however, this solution should not be used as-is in a production environment because additional configuration is required.
 
-- The architecture provides a baseline to help customers deploy workloads to Azure in a NHS-compliant manner.
-- Customers are responsible for conducting appropriate security and compliance assessments of any solution built using this architecture, as requirements may vary based on the specifics of each customer's implementation.
+Customers must demonstrate that certification was performed by a suitably qualified expert party such as those certified under the CREST or CSA STAR scheme to be UK NHS compliant.
 
 ## Architecture diagram and components
 
