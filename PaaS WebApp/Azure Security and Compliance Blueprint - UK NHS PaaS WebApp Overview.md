@@ -18,8 +18,8 @@ This solution provides a reference architecture for a PaaS web application with 
 This solution uses the following Azure services. Details of the deployment architecture are in the [Deployment Architecture](#deployment-architecture) section.
 
 - Application Gateway
-	- Web Application Firewall
-		- Firewall mode: Prevention
+	- Web application firewall
+		- Firewall mode: prevention
 		- Rule set: OWASP
 		- Listener port: 443
 - Azure Active Directory
@@ -50,7 +50,7 @@ App Service Environments are isolated to only run a single customer's applicatio
 Utilize App Service Environments for the following controls/configurations:
 
 - Host inside a secured Azure Virtual Network and network security rules
-- Self-signed ILB certificate for HTTPS communication
+- Self-signed Internal Laod Balancer certificate for HTTPS communication. As a best pratice, Microsoft recommends the use od a trusted certificate authority for enhanced security.
 - [Internal Load Balancing mode](https://docs.microsoft.com/azure/app-service-web/app-service-environment-with-internal-load-balancer)
 - Disable [TLS 1.0](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
 - Change [TLS Cipher](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
@@ -64,7 +64,7 @@ Utilize App Service Environments for the following controls/configurations:
 
 The architecture defines a private Virtual Network with an address space of 10.200.0.0/16.
 
-**Network security groups**: [Network security groups](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) contain Access Control Lists (ACLs) that allow or deny traffic within a Virtual Network. Network security groups can be used to secure traffic at a subnet or individual VM level. The following Network security groups exist:
+**Network security groups**: [Network security groups](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) contain Access Control Lists that allow or deny traffic within a Virtual Network. Network security groups can be used to secure traffic at a subnet or individual VM level. The following Network security groups exist:
 
 - 1 Network security group for Application Gateway
 - 1 Network security group for App Service Environment
