@@ -29,12 +29,12 @@ This solution uses the following Azure services. Details of the deployment archi
 - Azure Load Balancer
 - Azure Monitor
 - Azure Resource Manager
+- Azure Securityy Center
 - Azure SQL Database
 - Azure Storage
 - Azure Virtual Network
 	- Network security groups
 - Azure Web App
-- Operations Management Suite
 
 ## Deployment architecture
 
