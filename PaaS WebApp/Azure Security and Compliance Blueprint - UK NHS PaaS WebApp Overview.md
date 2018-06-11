@@ -6,7 +6,7 @@ This Azure Security and Compliance Blueprint provides guidance for the deploymen
 
 This reference architecture, implementation guide, and threat model provide a foundation for customers to comply with UK NHS requirements. This solution provides a baseline to help customers deploy workloads to Azure in a UK NHS compliant manner; however, this solution should not be used as-is in a production environment because additional configuration is required.
 
-Customers must demonstrate that certification was performed by a suitably qualified expert party such as those certified under the CREST or CSA STAR scheme to be UK NHS compliant.
+Customers must demonstrate that an assessment was performed by a suitably qualified expert party, such as those certified under the CREST or CSA STAR scheme to be UK NHS compliant.
 
 ## Architecture diagram and components
 
@@ -49,7 +49,7 @@ App Service Environments are isolated to only run a single customer's applicatio
 Utilize App Service Environments for the following controls/configurations:
 
 - Host inside a secured Azure Virtual Network and network security rules
-- Self-signed Internal Laod Balancer certificate for HTTPS communication. As a best pratice, Microsoft recommends the use od a trusted certificate authority for enhanced security.
+- Self-signed Internal Load Balancer certificate for HTTPS communication. As a best practice, Microsoft recommends the use of a trusted certificate authority for enhanced security.
 - [Internal Load Balancing mode](https://docs.microsoft.com/azure/app-service-web/app-service-environment-with-internal-load-balancer)
 - Disable [TLS 1.0](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
 - Change [TLS Cipher](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-custom-settings)
