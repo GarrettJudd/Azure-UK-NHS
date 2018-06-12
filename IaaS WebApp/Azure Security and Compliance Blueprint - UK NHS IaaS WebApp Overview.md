@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Azure Security and Compliance Blueprint provides guidance for the deployment of a United Kingdom National Health Good Practices Guide (UK NHS GPG) compliant platform as a service (PaaS) environment suitable for the collection, storage, and retrieval of healthcare data. It showcases a common reference architecture and demonstrates the proper handling of health-related data in a secure, compliant, multi-tier environment. This blueprint illustrates an end-to-end solution to meet the needs of organizations seeking a cloud-based approach to reducing the burden and cost of deployment.
+This Azure Security and Compliance Blueprint provides guidance for the deployment of a United Kingdom National Health Good Practices Guide (UK NHS GPG) compliant infrastructure as a service (IaaS) environment suitable for the collection, storage, and retrieval of healthcare data. It showcases a common reference architecture and demonstrates the proper handling of health-related data in a secure, compliant, multi-tier environment. This blueprint illustrates an end-to-end solution to meet the needs of organizations seeking a cloud-based approach to reducing the burden and cost of deployment.
 
 This reference architecture, implementation guide, and threat model provide a foundation for customers to comply with UK NHS requirements. This solution provides a baseline to help customers deploy workloads to Azure in a UK NHS compliant manner; however, this solution should not be used as-is in a production environment because additional configuration is required.
 
@@ -10,7 +10,7 @@ Customers must demonstrate that an assessment was performed by a suitably qualif
 
 ## Architecture diagram and components
 
-This solution deploys a reference architecture for an IaaS web application with a SQL Server backend. The architecture includes a ~~web tier,~~ data tier, Active Directory infrastructure, Application Gateway, and Load Balancer. Virtual machines deployed to the ~~web and~~ data tier~~s~~ are configured in an availability set, and SQL Server instances are configured in an Always On availability group for high availability. Virtual machines are domain-joined, and Active Directory group policies are used to enforce security and compliance configurations at the operating system level. A management bastion host provides a secure connection for administrators to access deployed resources. **Azure recommends configuring a VPN or ExpressRoute connection for management and data import into the reference architecture subnet.**
+This solution deploys a reference architecture for an IaaS web application with a SQL Server backend. The architecture includes a ~~web tier,~~ data tier, Active Directory infrastructure, Application Gateway, and Load Balancer. Virtual machines deployed to the web and data tiers are configured in an availability set, and SQL Server instances are configured in an Always On availability group for high availability. Virtual machines are domain-joined, and Active Directory group policies are used to enforce security and compliance configurations at the operating system level. A management bastion host provides a secure connection for administrators to access deployed resources. **Azure recommends configuring a VPN or ExpressRoute connection for management and data import into the reference architecture subnet.**
 
 ![Reference Architecture](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20IaaS%20WebApp%20Reference%20Architect.png)
 
@@ -19,7 +19,7 @@ This solution uses the following Azure services. Details of the deployment archi
 - Availability Sets
 	- (1) Active Directory domain controllers
 	- (1) SQL cluster nodes
-	- ~~(1) Web/IIS~~
+	- (1) Web/IIS
 - Azure Active Directory
 - Azure Application Gateway
 	- (1) Web Application Firewall
@@ -37,11 +37,11 @@ This solution uses the following Azure services. Details of the deployment archi
 	- (1) management/bastion (Windows Server 2016 Datacenter)
 	- (2) Active Directory domain controller (Windows Server 2016 Datacenter)
 	- (2) SQL Server cluster node (SQL Server 2017 on Windows Server 2016)
-	- ~~(2) Web/IIS (Windows Server 2016 Datacenter)~~
+	- (2) Web/IIS (Windows Server 2016 Datacenter)
 - Azure Virtual Network
 	- (1) /16 Network
-	- (4) /24 Networks
-	- (4) Network Security Groups
+	- (5) /24 Networks
+	- (5) Network Security Groups
 - Recovery Services Vault
 
 ## Deployment architecture
