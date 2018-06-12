@@ -1,11 +1,13 @@
 # Azure Security and Compliance Blueprint: Analytics for UK NHS GPG
 
 ## Overview
+
 This Azure Security and Compliance Blueprint provides guidance for the deployment of a data analytics architecture in Azure that assists with the requirements of United Kingdom National Health Good Practices Guide (UK NHS GPG). It showcases a common reference architecture and demonstrates the proper handling of credit card data (including card number, expiration, and verification data) in a secure, compliant, multi-tier environment. This blueprint demonstrates ways in which customers can meet specific security and compliance requirements and serves as a foundation for customers to build and configure their own data analytics solutions in Azure.
 
 This reference architecture, implementation guide, and threat model provide a foundation for customers to comply with UK NHS GPG requirements. This solution provides a baseline to help customers deploy workloads to Azure in a UK NHS GPG compliant manner; however, this solution should not be used as-is in a production environment because additional configuration is required.
 
 ## Architecture diagram and components
+
 This solution provides an analytics platform upon which customers can build their own analytics tools. The reference architecture outlines a generic use case where customers input data either through bulk data imports by the SQL/Data Administrator or through operational data updates via an Operational User. Both work streams incorporate Azure Functions for importing data into Azure SQL Database. Azure Functions must be configured by the customer through the Azure portal to handle the import tasks unique to each customer's own analytics requirements.
 
 Azure offers a variety of reporting and analytics services for the customer; however, this solution incorporates Azure Machine Learning services in conjunction with Azure SQL Database to rapidly browse through data and deliver faster results through smarter modeling of customer data. Azure Machine Learning is a form of machine learning intended to increase query speeds by discovering new relationships between datasets. Once the data has been trained through several statistical functions, up to 7 additional query pools (8 total including the customer server) can be synchronized with the same tabular models to spread query workload and reduce response times.
@@ -44,6 +46,7 @@ This solution uses the following Azure services. Details of the deployment archi
 - Power BI Dashboard
 
 ## Deployment architecture
+
 The following section details the deployment and implementation elements.
 
 **Azure Event Grid**:
@@ -59,6 +62,7 @@ The following section details the deployment and implementation elements.
 [Data Catalog](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) makes data sources easily discoverable and understandable by the users who manage the data. Common data sources can be registered, tagged, and searched for cardholder data. The data remains in its existing location, but a copy of its metadata is added to Data Catalog, along with a reference to the data source location. The metadata is also indexed to make each data source easily discoverable via search and understandable to the users who discover it.
 
 ### Virtual network
+
 This reference architecture defines a private Virtual Network with an address space of 10.0.0.0/16.
 
 **Network Security Groups**: [Network Security Groups](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) contain Access Control Lists (ACLs) that allow or deny traffic within a Virtual Network. Network Security Groups can be used to secure traffic at a subnet or individual VM level. The following Network Security Groups exist:
@@ -72,6 +76,7 @@ Each of the Network Security Groups have specific ports and protocols open so th
 **Subnets**: Each subnet is associated with its corresponding Network Security Group.
 
 ### Data in transit
+
 Azure encrypts all communications to and from Azure datacenters by default. All transactions to Azure Storage through the Azure portal occur via HTTPS.
 
 ### Data at rest
@@ -97,6 +102,7 @@ The Azure SQL Database instance uses the following database security measures:
 - [SQL Database dynamic data masking](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) limits sensitive cardholder data exposure by masking the data to non-privileged users or applications. Dynamic data masking can automatically discover potentially sensitive data and suggest the appropriate masks to be applied. This helps to identify and reduce access to cardholder data such that it does not exit the database via unauthorized access. Customers are responsible for adjusting dynamic data masking settings to adhere to their database schema.
 
 ### Identity management
+
 The following technologies provide capabilities to manage access to cardholder data in the Azure environment:
 -	[Azure Active Directory](https://azure.microsoft.com/services/active-directory/) is Microsoft's multi-tenant cloud-based directory and identity management service. All users for this solution are created in Azure Active Directory, including users accessing Azure SQL Database.
 -	Authentication to the application is performed using Azure Active Directory. For more information, see [Integrating applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Additionally, the database column encryption uses Azure Active Directory to authenticate the application to Azure SQL Database. For more information, see how to [protect sensitive data in SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
@@ -105,6 +111,7 @@ The following technologies provide capabilities to manage access to cardholder d
 -	[Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) detects potential vulnerabilities affecting an organization’s identities, configures automated responses to detected suspicious actions related to an organization’s identities, and investigates suspicious incidents to take appropriate action to resolve them.
 
 ### Security
+
 **Secrets management**:
 The solution uses [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) for the management of keys and secrets. Azure Key Vault helps safeguard cryptographic keys and secrets used by cloud applications and services. The following Azure Key Vault capabilities help customers protect cardholder data and access to such data:
 - Advanced access policies are configured on a need basis.
@@ -148,12 +155,14 @@ The data flow diagram for this reference architecture is available for [download
 ![Threat Model](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20Data%20Analytics%20Threat%20Model.png)
 
 ## Compliance documentation
+
 The [Azure Security and Compliance Blueprint - UK NHS GPG Customer Responsibility Matrix](https://aka.ms/) lists responsibilities for all UK NHS GPG requirements.
 
 The [Azure Security and Compliance Blueprint - UK NHS GPG Data Analytics Implementation Matrix](https://aka.ms/) provides information on which UK NHS GPG requirements are addressed by the data analytics architecture, including detailed descriptions of how the implementation meets the requirements of each covered control.
 
 
 ## Guidance and recommendations
+
 ### VPN and ExpressRoute
 A secure VPN tunnel or [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) needs to be configured to securely establish a connection to the resources deployed as a part of this data analytics reference architecture. By appropriately setting up a VPN or ExpressRoute, customers can add a layer of protection for data in transit.
 
@@ -164,6 +173,7 @@ Because traffic within the VPN tunnel does traverse the Internet with a site-to-
 Best practices for implementing a secure hybrid network that extends an on-premises network to Azure are [available](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid).
 
 ### Extract-Transform-Load process
+
 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) can load data into Azure SQL Database without the need for a separate extract, transform, load or import tool. PolyBase allows access to data through T-SQL queries. Microsoft's business intelligence and analysis stack, as well as third-party tools compatible with SQL Server, can be used with PolyBase.
 
 ### Azure Active Directory setup
