@@ -165,7 +165,7 @@ Additionally, the following Operations Management Suite solutions are included a
 
 The data flow diagram for this reference architecture is available for [download](https://aka.ms/) or can be found below. This model can help customers understand the points of potential risk in the system infrastructure when making modifications.
 
-![Threat Model](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20Data%Warehouse%20Threat%20Model.png)
+![Threat Model](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20Data%20Warehouse%20Threat%20Model.png)
 
 ## Compliance documentation
 
