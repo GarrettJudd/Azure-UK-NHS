@@ -10,7 +10,7 @@ Customers must demonstrate that an assessment was performed by a suitably qualif
 
 ## Architecture diagram and components
 
-This solution deploys a reference architecture for an IaaS web application with a SQL Server backend. The architecture includes aweb tier, data tier, Active Directory infrastructure, Application Gateway, and Load Balancer. Virtual machines deployed to the web and data tiers are configured in an availability set, and SQL Server instances are configured in an Always On availability group for high availability. Virtual machines are domain-joined, and Active Directory group policies are used to enforce security and compliance configurations at the operating system level. 
+This solution deploys a reference architecture for an IaaS web application with a SQL Server backend. The architecture includes aweb tier, data tier, Active Directory infrastructure, Application Gateway, and load balancer. Virtual machines deployed to the web and data tiers are configured in an availability set, and SQL Server instances are configured in an Always On availability group for high availability. Virtual machines are domain-joined, and Active Directory group policies are used to enforce security and compliance configurations at the operating system level. 
 
 For enhanced analytics and reporting, Azure SQL Databases can be configured with columnstore indexes. Azure SQL Databases can be scaled up or down or shut off completely in response to customer usage. All SQL traffic is encrypted with SSL through the inclusion of self-signed certificates. As a best practice, Azure recommends the use of a trusted certificate authority for enhanced security.
 
@@ -52,7 +52,7 @@ This solution uses the following Azure services. Details of the deployment archi
 - Azure Virtual Network
 	- (1) /16 Network
 	- (5) /24 Networks
-	- (5) Network Security Groups
+	- (5) Network security group
 - Recovery Services Vault
 
 ## Deployment architecture
@@ -77,11 +77,11 @@ The architecture defines a private virtual network with an address space of 10.2
 See the configuration for [Network Security Groups](https://github.com/Azure/fedramp-iaas-webapp/blob/master/nestedtemplates/virtualNetworkNSG.json) deployed with this solution. Organizations can configure Network Security Groups by editing the file above using [this documentation](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) as a guide.
 
 Each of the subnets has a dedicated Network Security Group:
-- 1 Network Security Group for Application Gateway (LBNSG)
-- 1 Network Security Group for bastion host (MGTNSG)
-- 1 Network Security Group for primary and backup domain controllers (ADNSG)
-- 1 Network Security Group for SQL Servers and Cloud Witness (SQLNSG)
-- 1 Network Security Group for web tier (WEBNSG)
+- 1 network security group for Application Gateway (LBNSG)
+- 1 network security group for bastion host (MGTNSG)
+- 1 network security group for primary and backup domain controllers (ADNSG)
+- 1 network security group for SQL Servers and Cloud Witness (SQLNSG)
+- 1 network security group for web tier (WEBNSG)
 
 ### Data in transit
 Azure encrypts all communications to and from Azure datacenters by default. Additionally, all transactions to Azure Storage through the Azure portal occur via HTTPS.
@@ -122,7 +122,7 @@ The following technologies provide capabilities to manage access to data in the 
 - Advanced access policies are configured on a need basis.
 - Key Vault access policies are defined with minimum required permissions to keys and secrets.
 - All keys and secrets in Key Vault have expiration dates.
-- All keys in Key Vault are protected by specialized hardware security modules. The key type is an HSM Protected 2048-bit RSA Key.
+- All keys in Key Vault are protected by specialized hardware security modules. The key type is a hardware security module protected 2048-bit RSA Key.
 - All users and identities are granted minimum required permissions using role-based access control.
 - Diagnostics logs for Key Vault are enabled with a retention period of at least 365 days.
 - Permitted cryptographic operations for keys are restricted to the ones required.
@@ -195,7 +195,7 @@ The [Azure Security and Compliance Blueprint – UK NHS PaaS Web Application Imp
 
 A secure VPN tunnel or [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) needs to be configured to securely establish a connection to the resources deployed as a part of this PaaS web application reference architecture. By appropriately setting up a VPN or ExpressRoute, customers can add a layer of protection for data in transit.
 
-By implementing a secure VPN tunnel with Azure, a virtual private connection between an on-premises network and an Azure Virtual Network can be created. This connection takes place over the Internet and allows customers to securely &quot;tunnel&quot; information inside an encrypted link between the customer&#39;s network and Azure. Site-to-site VPN is a secure, mature technology that has been deployed by enterprises of all sizes for decades. The [IPsec tunnel mode](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) is used in this option as an encryption mechanism.
+By implementing a secure VPN tunnel with Azure, a virtual private connection between an on-premises network and an Azure virtual network can be created. This connection takes place over the Internet and allows customers to securely &quot;tunnel&quot; information inside an encrypted link between the customer&#39;s network and Azure. Site-to-site VPN is a secure, mature technology that has been deployed by enterprises of all sizes for decades. The [IPsec tunnel mode](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) is used in this option as an encryption mechanism.
 
 Because traffic within the VPN tunnel does traverse the Internet with a site-to-site VPN, Microsoft offers another, even more secure connection option. Azure ExpressRoute is a dedicated WAN link between Azure and an on-premises location or an Exchange hosting provider. As ExpressRoute connections do not go over the Internet, these connections offer more reliability, faster speeds, lower latencies, and higher security than typical connections over the Internet. Furthermore, because this is a direct connection of customer&#39;s telecommunication provider, the data does not travel over the Internet and therefore is not exposed to it.
 
