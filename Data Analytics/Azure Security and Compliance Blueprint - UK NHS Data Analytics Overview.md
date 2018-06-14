@@ -1,4 +1,4 @@
-# Azure Security and Compliance Blueprint: Analytics for UK NHS
+# Azure Security and Compliance Blueprint: Data Analytics for UK NHS
 
 ## Overview
 
