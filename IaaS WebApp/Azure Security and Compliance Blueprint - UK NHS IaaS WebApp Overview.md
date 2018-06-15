@@ -40,6 +40,7 @@ This solution uses the following Azure services. Details of the deployment archi
 - Azure Monitor
 - Azure Resource Manager
 - Azure Security Center
+- Azure Automation
 - Azure Storage
 	- (7) Geo-redundant storage accounts
 - Azure Virtual Machines

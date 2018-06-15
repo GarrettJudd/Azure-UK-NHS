@@ -37,6 +37,7 @@ This solution uses the following Azure services. Details of the deployment archi
 - Azure Security Center
 - Azure Load Balancer
 - Azure Storage
+- Azure Automation
 - Azure Virtual Machines
     - (1) Bastion host
     - (2) Active Directory Domain Controller
