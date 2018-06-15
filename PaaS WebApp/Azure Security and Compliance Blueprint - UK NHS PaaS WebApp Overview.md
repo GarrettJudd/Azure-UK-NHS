@@ -28,7 +28,7 @@ For enhanced security, all resources in this solution are managed as a resource 
 
 **Microsoft recommends configuring a VPN or ExpressRoute connection for management and data import into the reference architecture subnet.**
 
-![Reference Architecture](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20PaaS%20WebApp%20Reference%20Architecture.png)
+![PaaS Web Application for UK NHS Reference Architecture](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20PaaS%20WebApp%20Reference%20Architecture.png)
 
 This solution uses the following Azure services. Details of the deployment architecture are in the [deployment architecture](#deployment-architecture) section.
 
@@ -183,7 +183,7 @@ The following Log Analytics [management solutions](https://docs.microsoft.com/az
 
 The data flow diagram for this reference architecture is available for [download](https://aka.ms/UKNHSPaaSdfd) or can be found below. This model can help customers understand the points of potential risk in the system infrastructure when making modifications.
 
-![Threat Model](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20PaaS%20WebApp%20Threat%20Model.png)
+![PaaS Web Application for UK NHS Threat Model](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20PaaS%20WebApp%20Threat%20Model.png)
 
 ## Compliance documentation
 

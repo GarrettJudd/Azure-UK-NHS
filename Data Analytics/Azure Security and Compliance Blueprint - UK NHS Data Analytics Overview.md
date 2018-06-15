@@ -34,7 +34,7 @@ For enhanced security, all resources in this solution are managed as a resource 
 
 Azure SQL Database is commonly managed through SQL Server Management Studio, which runs from a local machine configured to access the Azure SQL Database via a secure VPN or ExpressRoute connection. **Microsoft recommends configuring a VPN or ExpressRoute connection for management and data import into the reference architecture resource group**.
 
-![Reference Architecture](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20Data%20Analytics%20Reference%20Architecture.png)
+![Data Analytics for UK NHS Reference Architecture](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20Data%20Analytics%20Reference%20Architecture.png)
 
 This solution uses the following Azure services. Details of the deployment architecture are in the [Deployment architecture](#deployment-architecture) section.
 
@@ -165,7 +165,7 @@ The following Log Analytics [management solutions](https://docs.microsoft.com/az
 
 The data flow diagram for this reference architecture is available for [download](https://aka.ms/UKNHSdadfd) or can be found below. This model can help customers understand the points of potential risk in the system infrastructure when making modifications.
 
-![Threat Model](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20Data%20Analytics%20Threat%20Model.png)
+![Data Analytics for UK NHS Threat Model](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20Data%20Analytics%20Threat%20Model.png)
 
 ## Compliance documentation
 
