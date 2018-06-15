@@ -1,3 +1,15 @@
+---
+title: Azure Security and Compliance Blueprint - Data Warehouse for UK NHS
+description: Azure Security and Compliance Blueprint - Data Warehouse for UK NHS
+services: security
+author: jomolesk
+
+ms.assetid: f4e4b939-88db-4d78-8fa9-c2a12b2c025b
+ms.service: security
+ms.topic: article
+ms.date: 06/15/2018
+ms.author: jomolesk
+---
 # Azure Security and Compliance Blueprint: Data Warehouse for UK NHS
 
 ## Overview
@@ -23,7 +35,7 @@ This data warehouse reference architecture also includes an Active Directory tie
 
 A virtual machine serves as a management bastion host, providing a secure connection for administrators to access deployed resources. The data loads into the staging area through this management bastion host. **Microsoft recommends configuring a VPN or Azure ExpressRoute connection for management and data import into the reference architecture subnet.**
 
-![Reference Architecture](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20Data%20Warehouse%20Reference%20Architecture.png)
+![Data Warehouse for UK NHS Reference Architecture](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20Data%20Warehouse%20Reference%20Architecture.png)
 
 This solution uses the following Azure services. Details of the deployment architecture are in the [Deployment architecture](#deployment-architecture) section.
 
@@ -171,7 +183,7 @@ The following Log Analytics [management solutions](https://docs.microsoft.com/az
 
 The data flow diagram for this reference architecture is available for [download](https://aka.ms/) or can be found below. This model can help customers understand the points of potential risk in the system infrastructure when making modifications.
 
-![Threat Model](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20Data%20Warehouse%20Threat%20Model.png)
+![Data Warehouse for UK NHS Threat Model](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20Data%20Warehouse%20Threat%20Model.png)
 
 ## Compliance documentation
 

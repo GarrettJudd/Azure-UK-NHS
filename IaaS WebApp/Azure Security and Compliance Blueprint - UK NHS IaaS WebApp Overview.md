@@ -1,3 +1,15 @@
+---
+title: Azure Security and Compliance Blueprint - IaaS Web Application for UK NHS
+description: Azure Security and Compliance Blueprint - IaaS Web Application for UK NHS
+services: security
+author: jomolesk
+
+ms.assetid: 6081bab2-315a-4af4-92a1-7c773f449d66
+ms.service: security
+ms.topic: article
+ms.date: 06/15/2018
+ms.author: jomolesk
+---
 # Azure Security and Compliance Blueprint: IaaS Web Application for UK NHS
 
 ## Overview
@@ -16,7 +28,7 @@ For enhanced security, all resources in this solution are managed as a resource 
 
 A management bastion host provides a secure connection for administrators to access deployed resources. **Microsoft recommends configuring a VPN or ExpressRoute connection for management and data import into the reference architecture subnet.**
 
-![Reference Architecture](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20IaaS%20WebApp%20Reference%20Architect.png)
+![IaaS Web Application for UK NHS Reference Architecture](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20IaaS%20WebApp%20Reference%20Architect.png)
 
 This solution uses the following Azure services. Details of the deployment architecture are located in the [deployment architecture](#deployment-architecture) section.
 
@@ -179,7 +191,7 @@ The following Log Analytics [management solutions](https://docs.microsoft.com/az
 
 The data flow diagram for this reference architecture is available for [download](https://aka.ms/UKNHSIaaSdfd) or can be found below. This model can help customers understand the points of potential risk in the system infrastructure when making modifications.
 
-![Threat Model](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20IaaS%20WebApp%20Threat%20Model.png)
+![IaaS Web Application for UK NHS Threat Model](Azure%20Security%20and%20Compliance%20Blueprint%20-%20UK%20NHS%20IaaS%20WebApp%20Threat%20Model.png)
 
 ## Compliance documentation
 
