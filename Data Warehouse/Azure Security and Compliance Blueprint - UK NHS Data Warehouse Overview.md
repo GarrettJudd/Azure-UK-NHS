@@ -152,7 +152,7 @@ Azure Security Center uses a variety of detection capabilities to alert customer
 
 Azure Security Center provides prioritized security alerts and incidents, making it simpler for customers to discover and address potential security issues. A [threat intelligence report](https://docs.microsoft.com/azure/security-center/security-center-threat-report) is generated for each detected threat to assist incident response teams in investigating and remediating threats.
 
-Furthermore, this reference architecture utilizes the [vulnerability assessment](https://docs.microsoft.com/en-us/azure/security-center/security-center-vulnerability-assessment-recommendations) in Azure Security Center. Once configured, a partner agent (e.g. Qualys) reports vulnerability data to the partner’s management platform. In turn, the partner's management platform provides vulnerability and health monitoring data back to Azure Security Center, allowing customers to quickly identify vulnerable virtual machines.
+Furthermore, this reference architecture utilizes the [vulnerability assessment](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations) in Azure Security Center. Once configured, a partner agent (e.g. Qualys) reports vulnerability data to the partner’s management platform. In turn, the partner's management platform provides vulnerability and health monitoring data back to Azure Security Center, allowing customers to quickly identify vulnerable virtual machines.
 
 ### Business continuity
 
