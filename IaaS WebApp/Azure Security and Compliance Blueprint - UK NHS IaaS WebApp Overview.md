@@ -2,21 +2,17 @@
 
 ## Overview
 
-This Azure Security and Compliance Blueprint provides a reference architecture and guidance for a infrastructure as a service (IaaS) solution suitable for the collection, storage, and retrieval of healthcare data. This solution demonstrates ways in which customers can comply with guidance provided in the [Cloud Security Good Practice Guide](https://digital.nhs.uk/data-and-information/looking-after-information/data-security-and-information-governance/nhs-and-social-care-data-off-shoring-and-the-use-of-public-cloud-services/health-and-social-care-cloud-security-good-practice-guide) published by the United Kingdom’s [Health and Social Care Information Centre (NHS Digital)](https://digital.nhs.uk/), a partner of the National Health Service (NHS). The Cloud Security Good Practice Guide is based on the 14 [Cloud Security Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) published by the UK National Cyber Security Centre.
+This Azure Security and Compliance Blueprint provides a reference architecture and guidance for a infrastructure as a service (IaaS) web application suitable for the collection, storage, and retrieval of healthcare data. This solution demonstrates ways in which customers can comply with guidance provided in the [Cloud Security Good Practice Guide](https://digital.nhs.uk/data-and-information/looking-after-information/data-security-and-information-governance/nhs-and-social-care-data-off-shoring-and-the-use-of-public-cloud-services/health-and-social-care-cloud-security-good-practice-guide) published by the United Kingdom’s [Health and Social Care Information Centre (NHS Digital)](https://digital.nhs.uk/), a partner of the National Health Service (NHS). The Cloud Security Good Practice Guide is based on the 14 [Cloud Security Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) published by the UK National Cyber Security Centre.
 
 This reference architecture, implementation guide, and threat model are intended to serve as a foundation for customers to adjust to their specific requirements and should not be used as-is in a production environment without additional configuration. Customers are responsible for conducting appropriate security and compliance assessments of any solution built using this architecture, as requirements may vary based on the specifics of each customer's implementation.
 
 ## Architecture diagram and components
 
-This solution deploys a reference architecture for an IaaS web application with an Azure SQL Database backend. The architecture includes a web tier, data tier, Active Directory infrastructure, Application Gateway, and load balancer. Virtual machines deployed to the web and data tiers are configured in an availability set, and SQL Server instances are configured in an Always On availability group for high availability. Virtual machines are domain-joined, and Active Directory group policies are used to enforce security and compliance configurations at the operating system level. The environment load balances traffic for the web application across virtual machines managed by Azure. All external connections require TLSv1.2. This architecture also includes network security groups, an Application Gateway, Azure DNS, and Load Balancer.
-
-For enhanced analytics and reporting, Azure SQL Databases can be configured with columnstore indexes. Azure SQL Databases can be scaled up or down or shut off completely in response to customer usage. All SQL traffic is encrypted with SSL through the inclusion of self-signed certificates. As a best practice, Azure recommends the use of a trusted certificate authority for enhanced security.
+This solution deploys a reference architecture for an IaaS web application with a SQL Server backend. The architecture includes a web tier, data tier, Active Directory infrastructure, Application Gateway, and Load Balancer. Virtual machines deployed to the web and data tiers are configured in an availability set, and SQL Server instances are configured in an Always On availability group for high availability. Virtual machines are domain-joined, and Active Directory group policies are used to enforce security and compliance configurations at the operating system level. The environment load balances traffic for the web application across virtual machines managed by Azure. All external connections require TLSv1.2.
 
 The solution uses Azure Storage accounts, which customers can configure to use Storage Service Encryption to maintain confidentiality of data at rest. Azure stores three copies of data within a customer's chosen datacenter for resiliency. Geographic redundant storage ensures that data will be replicated to a secondary datacenter hundreds of miles away and again stored as three copies within that datacenter, preventing an adverse event at the customer's primary data center from resulting in a loss of data.
 
-For enhanced security, all resources in this solution are managed as a resource group through Azure Resource Manager. Azure Active Directory role-based access control is used for controlling access to deployed resources and keys in Azure Key Vault. System health is monitored through Azure Security Center and Azure Monitor. Customers configure both monitoring services to capture logs and display system health in a single, easily navigable dashboard. Azure Application Gateway is configured as a firewall in prevention mode and disallows traffic that is not TLSv1.2. The solution utilizes Azure Application Service Environment v2 to isolate the web tier in a non-multi-tenant environment.
-
-Azure SQL Database is commonly managed through SQL Server Management Studio (SSMS), which runs from a local machine configured to access the Azure SQL Database via a secure VPN or ExpressRoute connection.
+For enhanced security, all resources in this solution are managed as a resource group through Azure Resource Manager. Azure Active Directory role-based access control is used for controlling access to deployed resources and keys in Azure Key Vault. System health is monitored through Azure Security Center and Azure Monitor. Customers configure both monitoring services to capture logs and display system health in a single, easily navigable dashboard. Azure Application Gateway is configured as a firewall in prevention mode and disallows traffic that is not TLSv1.2.
 
 A management bastion host provides a secure connection for administrators to access deployed resources. **Microsoft recommends configuring a VPN or ExpressRoute connection for management and data import into the reference architecture subnet.**
 
@@ -24,16 +20,26 @@ A management bastion host provides a secure connection for administrators to acc
 
 This solution uses the following Azure services. Details of the deployment architecture are located in the [deployment architecture](#deployment-architecture) section.
 
+- Azure Virtual Machines
+	- (1) management/bastion (Windows Server 2016 Datacenter)
+	- (2) Active Directory domain controller (Windows Server 2016 Datacenter)
+	- (2) SQL Server cluster node (SQL Server 2017 on Windows Server 2016)
+	- (2) Web/IIS (Windows Server 2016 Datacenter)
 - Availability Sets
 	- (1) Active Directory domain controllers
 	- (1) SQL cluster nodes
 	- (1) Web/IIS
-- Azure Active Directory
+- Azure Virtual Network
+	- (1) /16 Network
+	- (5) /24 Networks
+	- (5) Network security group
+	- Recovery Services Vault
 - Azure Application Gateway
-	- (1) Web Application Firewall
+	- (1) Web application firewall
 		- Firewall mode: prevention
 		- Rule set: OWASP 3.0
 		- Listener port: 443
+- Azure Active Directory
 - Azure Cloud Witness
 - Azure Key Vault
 - Azure Load Balancer
@@ -43,22 +49,12 @@ This solution uses the following Azure services. Details of the deployment archi
 - Azure Automation
 - Azure Storage
 	- (7) Geo-redundant storage accounts
-- Azure Virtual Machines
-	- (1) management/bastion (Windows Server 2016 Datacenter)
-	- (2) Active Directory domain controller (Windows Server 2016 Datacenter)
-	- (2) SQL Server cluster node (SQL Server 2017 on Windows Server 2016)
-	- (2) Web/IIS (Windows Server 2016 Datacenter)
-- Azure Virtual Network
-	- (1) /16 Network
-	- (5) /24 Networks
-	- (5) Network security group
-- Recovery Services Vault
 
 ## Deployment architecture
 
 The following section details the deployment and implementation elements.
 
-**Bastion host**: The bastion host is the single point of entry that allows users to access the deployed resources in this environment. The bastion host provides a secure connection to deployed resources by only allowing remote traffic from public IP addresses on a safe list. To permit remote desktop (RDP) traffic, the source of the traffic needs to be defined in the Network Security Group.
+**Bastion host**: The bastion host is the single point of entry that allows users to access the deployed resources in this environment. The bastion host provides a secure connection to deployed resources by only allowing remote traffic from public IP addresses on a safe list. To permit remote desktop (RDP) traffic, the source of the traffic needs to be defined in the network security group.
 
 This solution creates a virtual machine as a domain-joined bastion host with the following configurations:
 -	[Antimalware extension](https://docs.microsoft.com/azure/security/azure-security-antimalware)
@@ -73,7 +69,7 @@ The architecture defines a private virtual network with an address space of 10.2
 
 **Network security groups**: This solution deploys resources in an architecture with a separate web subnet, database subnet, Active Directory subnet, and management subnet inside of a virtual network. Subnets are logically separated by network security group rules applied to the individual subnets to restrict traffic between subnets to only that necessary for system and management functionality.
 
-See the configuration for [Network Security Groups](https://github.com/Azure/fedramp-iaas-webapp/blob/master/nestedtemplates/virtualNetworkNSG.json) deployed with this solution. Organizations can configure Network Security Groups by editing the file above using [this documentation](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) as a guide.
+See the configuration for [network security groups](https://github.com/Azure/fedramp-iaas-webapp/blob/master/nestedtemplates/virtualNetworkNSG.json) deployed with this solution. Organizations can configure network security groups by editing the file above using [this documentation](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) as a guide.
 
 Each of the subnets has a dedicated Network Security Group:
 - 1 network security group for Application Gateway (LBNSG)
