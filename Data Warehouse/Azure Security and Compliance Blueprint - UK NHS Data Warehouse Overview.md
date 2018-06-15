@@ -176,7 +176,7 @@ The data flow diagram for this reference architecture is available for [download
 
 The [Azure Security and Compliance Blueprint – UK NHS Customer Responsibility Matrix](https://aka.ms/) lists all UK NHS requirements. This matrix details whether the implementation of each principle is the responsibility of Microsoft, the customer, or shared between the two.
 
-The [Azure Security and Compliance Blueprint – UK NHS Data Warehouse Implementation Matrix](https://aka.ms/) provides information on which UK NHS requirements are addressed by the PaaS web application architecture, including detailed descriptions of how the implementation meets the requirements of each covered principle.
+The [Azure Security and Compliance Blueprint – UK NHS Data Warehouse Implementation Matrix](https://aka.ms/) provides information on which UK NHS requirements are addressed by the data warehouse architecture, including detailed descriptions of how the implementation meets the requirements of each covered principle.
 
 ## Guidance and recommendations
 
