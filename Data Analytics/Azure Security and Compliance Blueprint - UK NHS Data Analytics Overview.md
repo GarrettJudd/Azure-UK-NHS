@@ -1,3 +1,15 @@
+---
+title: Azure Security and Compliance Blueprint - Data Analytics for UK NHS
+description: Azure Security and Compliance Blueprint - Data Analytics for UK NHS
+services: security
+author: jomolesk
+
+ms.assetid: 103dff31-e262-44a6-9b50-3b3467c0cb3a
+ms.service: security
+ms.topic: article
+ms.date: 06/15/2018
+ms.author: jomolesk
+---
 # Azure Security and Compliance Blueprint: Data Analytics for UK NHS
 
 ## Overview

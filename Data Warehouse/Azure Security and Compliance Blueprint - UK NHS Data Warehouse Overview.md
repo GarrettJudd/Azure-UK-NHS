@@ -1,3 +1,15 @@
+---
+title: Azure Security and Compliance Blueprint - Data Warehouse for UK NHS
+description: Azure Security and Compliance Blueprint - Data Warehouse for UK NHS
+services: security
+author: jomolesk
+
+ms.assetid: f4e4b939-88db-4d78-8fa9-c2a12b2c025b
+ms.service: security
+ms.topic: article
+ms.date: 06/15/2018
+ms.author: jomolesk
+---
 # Azure Security and Compliance Blueprint: Data Warehouse for UK NHS
 
 ## Overview
