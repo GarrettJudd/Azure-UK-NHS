@@ -151,9 +151,6 @@ The following Log Analytics [management solutions](https://docs.microsoft.com/az
 **Azure Monitor**:
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) helps users track performance, maintain security, and identify trends by enabling organizations to audit, create alerts, and archive data, including tracking API calls in their Azure resources.
 
-**Application Insights**:
-[Application Insights](https://docs.microsoft.com/azure/application-insights/) is an extensible Application Performance Management (APM) service for web developers on multiple platforms. Use it to monitor live web application. It detects performance anomalies and includes powerful analytics tools to help diagnose issues and to understand what users actually do with the app. It's designed to help users continuously improve performance and usability.
-
 ## Threat model
 
 The data flow diagram for this reference architecture is available for [download](https://aka.ms/UKNHSdadfd) or can be found below. This model can help customers understand the points of potential risk in the system infrastructure when making modifications.
