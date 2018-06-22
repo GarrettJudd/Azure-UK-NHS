@@ -39,17 +39,17 @@ Azure SQL Database is commonly managed through SQL Server Management Studio, whi
 This solution uses the following Azure services. Details of the deployment architecture are in the [Deployment architecture](#deployment-architecture) section.
 
 - Azure Active Directory
+- Azure Analysis Service
+- Azure Automation
 - Azure Data Catalog
 - Azure Disk Encryption
 - Azure Event Grid
 - Azure Functions
 - Azure Key Vault
-- Azure Analysis Service
 - Azure Monitor
 - Azure Security Center
 - Azure SQL Database
 - Azure Storage
-- Azure Automation
 - Azure Virtual Network
 	- (1) /16 Network
 	- (2) /24 Networks
